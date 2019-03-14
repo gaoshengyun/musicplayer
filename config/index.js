@@ -10,7 +10,19 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/proxy/':{
+        target:'https://c.y.qq.com',
+        'secure':true,
+        'changeOrigin':true,
+        'pathRewrite':{
+          '^/proxy':''
+        },
+        headers:{
+          'uer-Agent':'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
