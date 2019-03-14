@@ -6,6 +6,10 @@ import router from './router'
 import  fastclick from 'fastclick'
 fastclick.attach(document.body)
 
+//导入axios
+import axios from 'axios'
+Vue.prototype.axios = axios
+
 import 'common/stylus/index.styl'
 
 /* eslint-disable no-new */
