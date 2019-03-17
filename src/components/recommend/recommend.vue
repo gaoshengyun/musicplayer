@@ -1,34 +1,40 @@
 <template>
   <div class="recommend">
-    <div class="recommend-content">
-      <div v-if="recommends.length" class="slider-wrap">
-        <slider>
-          <div v-for="(item, index) in recommends" :key="item.id">
-            <a :href="item.linkUrl">
-              <img :src="item.picUrl" alt="">
-            </a>
-          </div>
-        </slider>
-      </div>
-      <div class="recommend-list">
-        <h1 class="list-title">热门歌单推荐</h1>
-        <ul>
-          <li class="item" v-for="(item, index) in discList" :key="item.id">
-            <div class="icon">
-              <img :src="item.picUrl" alt="" width="60" height="60">
+    
+    <scroll class="recommend-content" :data='discList'>
+      <div>
+        <div v-if="recommends.length" class="slider-wrap">
+          <slider>
+            <div v-for="(item, index) in recommends" :key="item.id">
+              <a :href="item.linkUrl">
+                <img :src="item.picUrl" alt="">
+              </a>
             </div>
-            <div class="text">
-              <h2 class="name">{{item.topTitle}}</h2>
-              <p class="desc" v-for="(item1, index) in item.songList" :key="index">{{item1.singername}}</p>
-            </div>
-          </li>
-        </ul>
+          </slider>
+        </div>
+      
+        <div class="recommend-list">
+          <h1 class="list-title">热门歌单推荐</h1>
+          <ul>
+            <li class="item" v-for="(item, index) in discList" :key="item.id">
+              <div class="icon">
+                <img :src="item.picUrl" alt="" width="60" height="60">
+              </div>
+              <div class="text">
+                <h2 class="name">{{item.topTitle}}</h2>
+                <p class="desc" v-for="(item1, index) in item.songList" :key="index">{{item1.songname}}-{{item1.singername}}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </scroll>
+   
   </div>
 </template>
 <script>
 import Slider from '@/base/slider/slider'
+import Scroll from '@/base/scroll/scroll'
 export default {
    data() {
     return {
@@ -58,7 +64,8 @@ export default {
     }
   },
   components:{
-    Slider
+    Slider,
+    Scroll
   }
 }
 </script>
@@ -132,7 +139,7 @@ export default {
           padding 0 20px 20px 20px
           .icon
             flex 0 0 60px
-            width 60px
+            width 0px
             padding-right 20px
           .text
             display flex
