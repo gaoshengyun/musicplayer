@@ -88,6 +88,9 @@ export default {
       this.dots = new Array(this.children.length)
     }
   },
+  destroyed() {
+    clearTimeout(this.timer)
+  },
 }
 </script>
 <style lang="stylus" scoped>
