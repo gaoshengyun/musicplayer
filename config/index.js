@@ -21,6 +21,17 @@ module.exports = {
         headers:{
           'uer-Agent':'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537'
         }
+      },
+      '/proxy2/':{
+        target:'https://u.y.qq.com',
+        'secure':true,
+        'changeOrigin':true,
+        'pathRewrite':{
+          '^/proxy2':''
+        },
+        headers:{
+          'uer-Agent':'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537'
+        }
       }
     },
 
