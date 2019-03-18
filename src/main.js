@@ -6,9 +6,17 @@ import router from './router'
 import  fastclick from 'fastclick'
 fastclick.attach(document.body)
 
+//导入lazyload
+import VueLazyLoad from 'vue-lazyload'
+
 //导入axios
 import axios from 'axios'
 Vue.prototype.axios = axios
+
+Vue.use(VueLazyLoad,{
+  loading:require('@/common/images/default.png')
+})
+
 
 import 'common/stylus/index.styl'
 

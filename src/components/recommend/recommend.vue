@@ -18,11 +18,11 @@
           <ul>
             <li class="item" v-for="(item, index) in discList" :key="item.id">
               <div class="icon">
-                <img :src="item.picUrl" alt="" width="60" height="60">
+                <img v-lazy="'http://y.gtimg.cn/music/photo_new/T002R150x150M000'+item.data.albummid+'.jpg'" alt="" width="60" height="60">
               </div>
               <div class="text">
-                <h2 class="name">{{item.topTitle}}</h2>
-                <p class="desc" v-for="(item1, index) in item.songList" :key="index">{{item1.songname}}-{{item1.singername}}</p>
+                <h2 class="name">{{item.data.albumname}}</h2>
+                <p class="desc">{{item.data.singer[0].name}}</p>
               </div>
             </li>
           </ul>
@@ -56,9 +56,9 @@ export default {
       })
     },
     getDiscList(){
-      this.axios.get('/proxy/v8/fcg-bin/fcg_myqq_toplist.fcg?_=1552550604505&g_tk=5381&uin=0&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1').then(result=>{
+      this.axios.get('/proxy/v8/fcg-bin/fcg_v8_toplist_cp.fcg?tpl=3&page=detail&date=2019-03-16&topid=4&type=top&song_begin=0&song_num=30&g_tk=5381&loginUin=0&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0').then(result=>{
         if(result.status === 200){
-          this.discList = result.data.data.topList
+          this.discList = result.data.songlist
         }
       })
     }
